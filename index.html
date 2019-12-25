@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Data Visualization</title>
+
+    <link rel="stylesheet" href="./lib/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Design Challenge 2</h1>
+            <p>A utility to visualize threaded data. Please upload a json file using the
+               file browser below.
+            </p>
+        </div>
+    </div>
+
+    <div class="container mb-4 border-bottom border-primary">
+        <div class="row">
+            <div class="col">
+                <form id="js-file-form">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="js-json-file">JSON File</label>
+                            <input class="form-control-file"
+                                   type="file"
+                                   id="js-json-file" name="json-file"
+                                   accept=".json" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <button type="click" id="js-file-form-submit" class="btn btn-primary btn-block" value="go">Go</button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <button type="click" id="js-file-sample1" class="btn btn-danger btn-block" value="sample1">Load Sample 1</button>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <button type="click" id="js-file-sample2" class="btn btn-danger btn-block" value="sample2">Load Sample 2</button>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container js-details mb-4 border-bottom pb-3">
+        <div class="row">
+            <div class="col">
+                <h4 class="mb-3">Detailed view</h4>
+                <form id="js-master-form" class="border border-secondary p-3 mb-5">
+                    <div class="form-row border-bottom mb-1">
+                        <div class="form-group col-md-3">
+                            <select id="js-master-select-row" class="form-control form-control-lg">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <select id="js-master-select-col" class="form-control form-control-lg">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <select id="js-master-select-id" class="form-control form-control-lg">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <select id="js-master-select-attr" class="form-control form-control-lg">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row" id="js-tweakform">
+                        <div class="form-group col-md-3 col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="chartType" id="chartTypeBar" value="option1" checked>
+                                <label class="form-check-label" for="chartTypeBar">Bar</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="chartType" id="chartTypeLine" value="option2">
+                                <label class="form-check-label" for="chartTypeLine">Line</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="chartNull" id="showNull" value="option1" checked>
+                                <label class="form-check-label" for="showNull">Show Nulls</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="chartNull" id="hideNull" value="option2">
+                                <label class="form-check-label" for="hideNull">Hide Nulls</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="chartSort" id="sortLabel" value="option1" checked>
+                                <label class="form-check-label" for="sortLabel">Sort by label</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="chartSort" id="sortValue" value="option2">
+                                <label class="form-check-label" for="sortValue">Sort by Value</label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3 col-sm-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sortType" id="sortAsc" value="option1" checked>
+                                <label class="form-check-label" for="sortAsc">Ascending</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="sortType" id="sortDsc" value="option2">
+                                <label class="form-check-label" for="sortDsc">Descending</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <button type="submit" class="btn btn-primary btn-block">Go</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="js-chart-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-4 pb-4 mt-6 border-bottom border-primary js-details">
+        <div class="row">
+            <div class="col">
+                <h4 class="mb-2">Overall view</h4>
+                <div id="js-timescatter-area">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container text-center mb-4">
+        <a class="text-dark" target="_blank" href='https://github.com/kartikanand/threaded-data-vis'>
+            Github Link
+        </a>
+    </footer>
+
+    <script type="text/javascript" src="./lib/js/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="./lib/js/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="./lib/js/moment.js"></script>
+    <script type="text/javascript" src="./lib/js/popper.min.js"></script>
+    <script type="text/javascript" src="./lib/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="./src/js/quartile.js"></script>
+    <script type="text/javascript" src="./src/js/config.js"></script>
+    <script type="text/javascript" src="./src/js/builder.js"></script>
+    <script type="text/javascript" src="./src/js/scatterTimePlot.js"></script>
+    <script type="text/javascript" src="./src/js/aggregate.js"></script>
+    <script type="text/javascript" src="./src/js/handlers.js"></script>
+    <script type="text/javascript" src="./src/js/utils.js"></script>
+    <script type="text/javascript" src="./src/js/script.js"></script>
+
+</body>
+</html>
