@@ -1,4 +1,4 @@
-# Threaded Message Visualizations
+# Threaded Message Visualisations
 
 The repository serves to showcase various visualizations to analyze threaded
 discussion data which consists of topics, groups, and individual users.
